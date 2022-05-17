@@ -88,7 +88,7 @@ class LinearActuator {
 //DC motor class with 2 channel encoder attached
 class Motor{
   public:
-    Motor(int IN1, int IN2, int ENA, int lowerLim, int upperLim, Encoder* enc, double countPerCm);
+    Motor(int IN1, int IN2, int ENA, int lowerLim, int upperLim, Encoder* enc, double countPerCm, int encDir);
 
     //Open Loop Methods
     void goForward(int pwm);
@@ -150,6 +150,7 @@ class Motor{
 
     //Encoder object pointer
     Encoder* _encoder = NULL;  
+    int _encDir;
 
     //InternalUpdate() variables for calculations
     int _polingInterval;

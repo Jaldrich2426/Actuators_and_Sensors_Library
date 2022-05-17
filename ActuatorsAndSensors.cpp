@@ -125,7 +125,7 @@ void LinearActuator::turnOff(){
 ***************************************************************************************/
 
 //Class Instantiator. Pass the three pins, upper and lower pwm limits, a pointer of an encoder object from Encoder.h (e.g., Encoder* myEnc(18,19)), and the number of encoder counts per cm of tangential motion (i.e., counts per rev*rev/cm)
-Motor::Motor(int IN1, int IN2, int ENA, int lowerLim, int upperLim, Encoder* enc, double countPerCm){
+Motor::Motor(int IN1, int IN2, int ENA, int lowerLim, int upperLim, Encoder* enc, double countPerCm,int encDir){
   //Define Pins
   _IN1=IN1;
   _IN2=IN2;
@@ -137,6 +137,7 @@ Motor::Motor(int IN1, int IN2, int ENA, int lowerLim, int upperLim, Encoder* enc
 
   //Set object pointer to encoder
   _encoder = enc;
+  _encDir = encDir;
 
   //Motor Geometry
   _countPerCm=countPerCm;
@@ -285,7 +286,7 @@ void Motor::PIDVel(double kp, double ki, double kd, double target){
 
 //Return motor position
 double Motor::getPos(){
-  _position= _encoder->read()/_countPerCm;
+  _position= _encDir*_encoder->read()/_countPerCm;
   return _position;
 }
 
