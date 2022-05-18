@@ -74,12 +74,14 @@ class LinearActuator {
     void pause();
     void turnOn();
     void turnOff();
+    String getLog();
   private:
     int _IN1;
     int _IN2;
     int _ENA;
     bool _active;
     int _effort;
+    
 };
 
 /**************************************************************************************
@@ -116,6 +118,7 @@ class Motor{
 
     //Main Loop Function that MUST be called in loop() without significant delay functions (runs on a 50 microsecond clock)
     void internalUpdate(); //needs finishing
+    String getLog();
 
   private:
     //Pins
@@ -173,6 +176,7 @@ class Motor{
 
     //Extra logging
     int _effort;
+    
 };
 
 #endif

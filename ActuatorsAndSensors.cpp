@@ -120,6 +120,14 @@ void LinearActuator::turnOff(){
   _active=false;
 }
 
+String LinearActuator::getLog(){
+  String log="";
+
+  log += _active;
+  log += ",";
+  log += _effort;
+  return log;
+}
 /**************************************************************************************
 **************************************Motor Class**************************************
 ***************************************************************************************/
@@ -392,4 +400,28 @@ void Motor::goBackwardUntil(int pwm, Sensor *trigger, String condition ,int valu
   _condition=condition;
   _triggerValue=value;
   _checkTrigger=true;
+}
+
+String Motor::getLog(){
+  String log="";
+
+  log += _active;
+  log += ",";
+  log += _position;
+  log += ",";
+  log += _velocity;
+  log += ",";
+  log += _acceleration;
+  log += ",";
+  log += _effort;
+  log += ",";
+  log += _posTrack;
+  log += ",";
+  if(_posTrack){
+    log += _posTarget;
+  }else{
+    log += _velTarget;
+  }
+  log += ",";
+  return log;
 }
