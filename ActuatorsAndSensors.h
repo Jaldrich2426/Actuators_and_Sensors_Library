@@ -79,6 +79,7 @@ class LinearActuator {
     int _IN2;
     int _ENA;
     bool _active;
+    int _effort;
 };
 
 /**************************************************************************************
@@ -169,6 +170,9 @@ class Motor{
     void goForwardInternal(int pwm); //done
     void goBackwardInternal(int pwm); //done
     void pauseInternal(); //done
+
+    //Extra logging
+    int _effort;
 };
 
 #endif

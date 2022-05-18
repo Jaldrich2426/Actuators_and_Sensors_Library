@@ -162,6 +162,8 @@ Motor::Motor(int IN1, int IN2, int ENA, int lowerLim, int upperLim, Encoder* enc
 
   //Initialize No Triggers
   _checkTrigger=false;
+
+
 }
 
 //MUST call in main loop - Performs all internal function updates
@@ -338,6 +340,7 @@ void Motor::goForwardInternal(int pwm){
     digitalWrite(_IN1,LOW);
     digitalWrite(_IN2,HIGH);
     analogWrite(_ENA,pwm);
+    _effort=pwm;
   }
 }
 
@@ -349,6 +352,7 @@ void Motor::goBackwardInternal(int pwm){
     digitalWrite(_IN1,HIGH);
     digitalWrite(_IN2,LOW);
     analogWrite(_ENA,pwm);
+    _effort=-pwm;
   }
 }
 
@@ -363,6 +367,7 @@ void Motor::pauseInternal(){ //done
   digitalWrite(_IN1,LOW);
   digitalWrite(_IN2,LOW);
   analogWrite(_ENA,0);
+  _effort=0;
 }
 
 //Go forward until event happens as on specified sensor pointer, under contition (i.e., "==","!=","<",...) compared to value
