@@ -415,6 +415,8 @@ String Motor::getLog(){
   log += ",";
   log += _effort;
   log += ",";
+  log += _closedLoop;
+  log += ",";
   log += _posTrack;
   log += ",";
   if(_posTrack){
